@@ -1,0 +1,11 @@
+jenkins
+nginx
+tomcat
+postgres
+mongo
+redis
+sonar
+zabbix
+
+[all:vars]
+ansible_ssh_common_args="-o StrictHostKeyChecking=no"

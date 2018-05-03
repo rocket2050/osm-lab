@@ -42,7 +42,10 @@ setup-zabbix-host:
 
 setup-cserver-host:
 	docker rm -f cserver || true
-	docker run -h cserver --name cserver --link jenkins:jenkins --link nginx:nginx --link tomcat:tomcat --link postgres:postgres --link mongo:mongo --link redis:redis --link sonar:sonar --link zabbix:zabbix -v ${PWD}:/opt/OdMont -itd opstree/osm:cserver /bin/bash
+	docker run -h cserver --name cserver --link jenkins:jenkins --link nginx:nginx --link tomcat:tomcat --link postgres:postgres --link mongo:mongo --link redis:redis --link sonar:sonar --link zabbix:zabbix -v ${PWD}:/opt/osm -itd opstree/osm:cserver /bin/bash
+
+presetup-control-server:
+	docker exec cserver bash -c '/opt/osm/setupControlServer.sh'
 
 setup-lab-hosts:
 	make setup-jenkins-host
@@ -54,3 +57,4 @@ setup-lab-hosts:
 	make setup-sonar-host
 	make setup-zabbix-host
 	make setup-cserver-host
+	make presetup-control-server
