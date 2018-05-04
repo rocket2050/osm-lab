@@ -1,8 +1,8 @@
 build-cserver:
-	docker build --no-cache -t opstree/osm:cserver -f Dockerfile.cserver .
+	docker build -t opstree/osm:cserver -f Dockerfile.cserver .
 
 build-tserver:
-	docker build --no-cache -t opstree/osm:tserver -f Dockerfile.tserver .
+	docker build -t opstree/osm:tserver -f Dockerfile.tserver .
 
 build-all:
 	make build-cserver
