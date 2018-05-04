@@ -1,5 +1,6 @@
 ---
 - hosts: jenkins
   roles:
-    - { role: "osm_jenkins" }
+    - role: osm_jenkins
+      jenkins_plugins: job-dsl
   become: yes
