@@ -1,5 +1,5 @@
 ---
-- hosts: redis
+- hosts: kibana
   roles:
     - role: osm_kibana
   user: root

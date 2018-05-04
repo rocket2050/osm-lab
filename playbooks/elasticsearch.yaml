@@ -1,5 +1,5 @@
 ---
-- hosts: postgres
+- hosts: elasticsearch
   roles:
     - role: osm_java
     - role: osm_elasticsearch

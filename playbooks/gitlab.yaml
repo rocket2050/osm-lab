@@ -1,5 +1,5 @@
 ---
-- hosts: postgres
+- hosts: gitlab
   roles:
     - role: osm_gitlab
   user: root
