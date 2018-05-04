@@ -9,37 +9,14 @@ function installSoftwares() {
 }
 
 function installAnsibleRoles() {
-  rm -rf /etc/ansible/roles/osm_zabbix
-  git clone https://github.com/opstree-ansible/osm_zabbix.git -b Release-1.1 /etc/ansible/roles/osm_zabbix
 
-  rm -rf /etc/ansible/roles/mysql-server
-  git clone https://github.com/opstree-ansible/mysql-server.git /etc/ansible/roles/mysql-server
-
-  rm -rf /etc/ansible/roles/osm_jenkins
-  git clone https://github.com/opstree-ansible/osm_jenkins /etc/ansible/roles/osm_jenkins
-
-  rm -rf /etc/ansible/roles/osm_java
-  git clone https://github.com/opstree-ansible/osm_java.git /etc/ansible/roles/osm_java
-
-  rm -rf /etc/ansible/roles/osm_nginx
-  git clone https://github.com/opstree-ansible/osm_nginx.git /etc/ansible/roles/osm_nginx
-
-  rm -rf /etc/ansible/roles/osm_mongodb
-  git clone https://github.com/opstree-ansible/osm_mongodb.git -b release-1.0 /etc/ansible/roles/osm_mongodb
-
-  rm -rf /etc/ansible/roles/osm_gitlab
-  git clone https://github.com/opstree-ansible/osm_gitlab.git /etc/ansible/roles/osm_gitlab
-
-  rm -rf /etc/ansible/roles/osm_snoopy
-  git clone https://github.com/opstree-ansible/osm_snoopy.git /etc/ansible/roles/osm_snoopy
-
-  rm -rf /etc/ansible/roles/osm_elasticsearch
-  git clone https://github.com/opstree-ansible/osm_elasticSearch.git /etc/ansible/roles/osm_elasticsearch
-
-  rm -rf /etc/ansible/roles/osm_kibana
-  git clone https://github.com/opstree-ansible/osm_kibana.git /etc/ansible/roles/osm_kibana
+  for role in osm_zabbix mysql-server osm_jenkins osm_java osm_nginx osm_mongodb osm_gitlab osm_snoopy osm_elasticSearch osm_kibana;
+  do
+    echo $role
+    rm -rf /etc/ansible/roles/$role
+    git clone https://github.com/opstree-ansible/${role}.git /etc/ansible/roles/${role}
+  done
 }
-
 
 function setupJenkins() {
   ansible-playbook -i /opt/osm/inventory /opt/osm/playbooks/jenkins.yaml

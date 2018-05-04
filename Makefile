@@ -8,9 +8,9 @@ build-all:
 	make build-cserver
 	make build-tserver
 
-setup-jenkins-host:
-	docker rm -f jenkins || true
-	docker run -p 8080:8080 -h jenkins  --name jenkins  -itd opstree/osm:tserver
+setup-elasticsearch-host:
+	docker rm -f elasticsearch || true
+	docker run -h elasticsearch  --name elasticsearch  -itd opstree/osm:tserver
 
 setup-nginx-host:
 	docker rm -f nginx || true
@@ -20,9 +20,9 @@ setup-tomcat-host:
 	docker rm -f tomcat || true
 	docker run -h tomcat  --name tomcat  -itd opstree/osm:tserver
 
-setup-postgres-host:
-	docker rm -f postgres || true
-	docker run -h postgres  --name postgres  -itd opstree/osm:tserver
+setup-mysql-host:
+	docker rm -f mysql || true
+	docker run -h mysql  --name mysql  -itd opstree/osm:tserver
 
 setup-mongo-host:
 	docker rm -f mongo || true
@@ -40,19 +40,24 @@ setup-zabbix-host:
 	docker rm -f zabbix || true
 	docker run -h zabbix  --name zabbix -itd opstree/osm:tserver
 
+setup-kibana-host:
+	docker rm -f kibana || true
+	docker run -h kibana  --name kibana -itd opstree/osm:tserver
+
 setup-cserver-host:
 	docker rm -f cserver || true
-	docker run -h cserver --name cserver -p 8090:8080 --link jenkins:jenkins --link nginx:nginx --link tomcat:tomcat --link postgres:postgres --link mongo:mongo --link redis:redis --link sonar:sonar --link zabbix:zabbix -v ${PWD}:/opt/osm -itd opstree/osm:cserver /bin/bash
+	docker run -h cserver --name cserver -p 8090:8080 --link kibana:kibana --link elasticsearch:elasticsearch --link nginx:nginx --link tomcat:tomcat --link postgres:postgres --link mongo:mongo --link redis:redis --link sonar:sonar --link zabbix:zabbix -v ${PWD}:/opt/osm -itd opstree/osm:cserver /bin/bash
 
 presetup-control-server:
 	docker exec cserver bash -c '/opt/osm/setupControlServer.sh'
 
 setup-lab-hosts:
 	make build-all
-	make setup-jenkins-host
+	make setup-elasticsearch-host
+	make setup-kibana-host
 	make setup-nginx-host
 	make setup-tomcat-host
-	make setup-postgres-host
+	make setup-mysql-host
 	make setup-mongo-host
 	make setup-redis-host
 	make setup-sonar-host

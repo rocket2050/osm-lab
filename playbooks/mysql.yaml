@@ -1,5 +1,5 @@
 ---
-- hosts: postgres
+- hosts: mysql
   roles:
     - role: mysql-server
   user: root
