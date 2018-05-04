@@ -7,7 +7,9 @@ parameters {
 steps {
   shell{
     command('''\
-      ansible-playbook -i /opt/osm/inventory /opt/osm/playbooks/${Component}.yaml
+      sudo chmod 400 /opt/osm/cserver
+      sudo chown jenkins:jenkins /opt/osm/cserver
+      ansible-playbook -i /opt/osm/inventory  --private-key /opt/osm/cserver  /opt/osm/playbooks/${Component}.yaml
       '''.stripIndent())}
 }
 

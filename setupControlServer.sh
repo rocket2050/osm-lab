@@ -5,7 +5,7 @@ function installSoftwares() {
   apt-get -y install git vim software-properties-common
   apt-add-repository -y ppa:ansible/ansible
   apt-get -y update
-  apt-get -y install ansible python-pip libmysqlclient-dev python2.7-dev
+  apt-get -y install ansible python-pip libmysqlclient-dev python2.7-dev iputils-ping
 }
 
 function installAnsibleRoles() {

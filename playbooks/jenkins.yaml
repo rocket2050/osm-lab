@@ -3,3 +3,9 @@
   roles:
     - role: osm_jenkins
   become: yes
+
+  tasks:
+    - name: Add sudo access to jenkins
+      lineinfile:
+        path: /etc/sudoers
+        line: 'jenkins      ALL=(ALL) NOPASSWD: ALL'
