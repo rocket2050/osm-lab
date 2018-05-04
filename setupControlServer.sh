@@ -20,7 +20,16 @@ function installAnsibleRoles() {
 
   rm -rf /etc/ansible/roles/osm_java
   git clone https://github.com/opstree-ansible/osm_java.git /etc/ansible/roles/osm_java
+
+  rm -rf /etc/ansible/roles/osm_nginx
+  git clone https://github.com/opstree-ansible/osm_nginx.git /etc/ansible/roles/osm_nginx
+}
+
+
+function setupJenkins() {
+  ansible-playbook -i /opt/osm/inventory /opt/osm/playbooks/jenkins.yaml
 }
 
 installSoftwares
 installAnsibleRoles
+setupJenkins

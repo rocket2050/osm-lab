@@ -1,0 +1,6 @@
+---
+- hosts: nginx
+  roles:
+    - role: osm_nginx
+  user: root
+  become: yes

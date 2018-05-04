@@ -1,0 +1,6 @@
+---
+- hosts: postgres
+  roles:
+    - role: mysql-server
+  user: root
+  become: yes
