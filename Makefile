@@ -46,7 +46,7 @@ setup-kibana-host:
 
 setup-cserver-host:
 	docker rm -f cserver || true
-	docker run -h cserver --name cserver -p 8090:8080 --link kibana:kibana --link elasticsearch:elasticsearch --link nginx:nginx --link tomcat:tomcat --link postgres:postgres --link mongo:mongo --link redis:redis --link sonar:sonar --link zabbix:zabbix -v ${PWD}:/opt/osm -itd opstree/osm:cserver /bin/bash
+	docker run -h cserver --name cserver -p 8090:8080 --link kibana:kibana --link elasticsearch:elasticsearch --link nginx:nginx --link tomcat:tomcat --link mongo:mongo --link redis:redis --link sonar:sonar --link zabbix:zabbix -v ${PWD}:/opt/osm -itd opstree/osm:cserver /bin/bash
 
 presetup-control-server:
 	docker exec cserver bash -c '/opt/osm/setupControlServer.sh'
