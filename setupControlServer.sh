@@ -11,8 +11,15 @@ function installSoftwares() {
 function installAnsibleRoles() {
   rm -rf /etc/ansible/roles/osm_zabbix
   git clone https://github.com/opstree-ansible/osm_zabbix.git -b Release-1.1 /etc/ansible/roles/osm_zabbix
+
   rm -rf /etc/ansible/roles/mysql-server
   git clone https://github.com/opstree-ansible/mysql-server.git /etc/ansible/roles/mysql-server
+
+  rm -rf /etc/ansible/roles/osm_jenkins
+  git clone https://github.com/opstree-ansible/osm_jenkins /etc/ansible/roles/osm_jenkins
+
+  rm -rf /etc/ansible/roles/osm_java
+  git clone https://github.com/opstree-ansible/osm_java.git /etc/ansible/roles/osm_java
 }
 
 installSoftwares

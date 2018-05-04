@@ -48,6 +48,7 @@ presetup-control-server:
 	docker exec cserver bash -c '/opt/osm/setupControlServer.sh'
 
 setup-lab-hosts:
+	make build-all
 	make setup-jenkins-host
 	make setup-nginx-host
 	make setup-tomcat-host

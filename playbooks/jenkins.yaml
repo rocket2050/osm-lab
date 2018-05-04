@@ -1,0 +1,5 @@
+---
+- hosts: jenkins
+  roles:
+    - { role: "osm_jenkins" }
+  become: yes
