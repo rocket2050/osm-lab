@@ -23,6 +23,21 @@ function installAnsibleRoles() {
 
   rm -rf /etc/ansible/roles/osm_nginx
   git clone https://github.com/opstree-ansible/osm_nginx.git /etc/ansible/roles/osm_nginx
+
+  rm -rf /etc/ansible/roles/osm_mongodb
+  git clone https://github.com/opstree-ansible/osm_mongodb.git -b release-1.0 /etc/ansible/roles/osm_mongodb
+
+  rm -rf /etc/ansible/roles/osm_gitlab
+  git clone https://github.com/opstree-ansible/osm_gitlab.git /etc/ansible/roles/osm_gitlab
+
+  rm -rf /etc/ansible/roles/osm_snoopy
+  git clone https://github.com/opstree-ansible/osm_snoopy.git /etc/ansible/roles/osm_snoopy
+
+  rm -rf /etc/ansible/roles/osm_elasticsearch
+  git clone https://github.com/opstree-ansible/osm_elasticSearch.git /etc/ansible/roles/osm_elasticsearch
+
+  rm -rf /etc/ansible/roles/osm_kibana
+  git clone https://github.com/opstree-ansible/osm_kibana.git /etc/ansible/roles/osm_kibana
 }
 
 

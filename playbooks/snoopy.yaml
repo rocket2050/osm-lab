@@ -1,0 +1,6 @@
+---
+- hosts: postgres
+  roles:
+    - role: osm_snoopy
+  user: root
+  become: yes

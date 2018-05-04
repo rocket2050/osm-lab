@@ -1,0 +1,6 @@
+---
+- hosts: postgres
+  roles:
+    - role: osm_gitlab
+  user: root
+  become: yes

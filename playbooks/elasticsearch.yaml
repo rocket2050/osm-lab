@@ -1,0 +1,8 @@
+---
+- hosts: postgres
+  roles:
+    - role: osm_java
+    - role: osm_elasticsearch
+
+  user: root
+  become: yes

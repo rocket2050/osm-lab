@@ -1,0 +1,6 @@
+---
+- hosts: redis
+  roles:
+    - role: osm_kibana
+  user: root
+  become: yes

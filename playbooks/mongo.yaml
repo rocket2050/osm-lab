@@ -1,0 +1,6 @@
+---
+- hosts: mongo
+  roles:
+    - role: osm_mongodb
+  user: root
+  become: yes
