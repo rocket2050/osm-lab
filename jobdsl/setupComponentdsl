@@ -1,7 +1,7 @@
 job('ComponentSetup') {
 description('Component setup job')
 parameters {
-  choiceParam('Component','This will be your commponent to install',['nginx','mysql','mongo','gitlab', 'snoopy', 'elasticsearch', 'kibana'],)
+  choiceParam('Component',['nginx','mysql','mongo','gitlab', 'snoopy', 'elasticsearch', 'kibana'],)
 }
 
 steps {
