@@ -1,0 +1,18 @@
+job('Command-Executor') {
+description('Adhoc-coomand')
+parameters {
+  choiceParam('Host',['nginx','mysql','mongo','gitlab', 'snoopy', 'elasticsearch', 'kibana'],)
+   stringParam('Command', '', '')
+}
+
+   steps {
+  shell{
+    command('''\
+    #!/bin/bash 
+    name=$Command
+    ansible ${Host} -a  "$name" 
+
+      '''.stripIndent())}
+}
+
+}
